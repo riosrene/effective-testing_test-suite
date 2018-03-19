@@ -1,42 +1,37 @@
 package com.effectivetesting.user;
 
-import static com.github.restdriver.serverdriver.Matchers.hasStatusCode;
-import static com.github.restdriver.serverdriver.RestServerDriver.body;
-import static com.github.restdriver.serverdriver.RestServerDriver.delete;
-import static com.github.restdriver.serverdriver.RestServerDriver.post;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static io.restassured.RestAssured.*;
 
 import org.junit.After;
 import org.junit.Test;
 
 import com.effectivetesting.entities.User;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.restdriver.serverdriver.http.response.Response;
 
 public class TestCreateUser {
 	private static final String DEFAULT_BASE_URL = "http://localhost:5000/api";
 	private static final String ID = "23";
 	
 	@Test
-	public void postUser() throws JsonProcessingException {
-		User user = createTestObject();
-		ObjectMapper mapper = new ObjectMapper();
+	public void postUser() {
+		User user = createTestUser();
 		
-		String jsonInString = mapper.writeValueAsString(user);
-		System.out.println(jsonInString);
-		
-		Response response = post(DEFAULT_BASE_URL + "/user", body(jsonInString, "application/json"));
-        assertThat(response, hasStatusCode( 201 ));
+        given()
+        	.contentType("application/json")
+        	.body(user)
+        	
+        .when()
+    		.post(DEFAULT_BASE_URL + "/user")
+        	
+    	.then()
+    		.statusCode(201);
 	}
 
     @After
     public void tearDown() {
-        Response response = delete(DEFAULT_BASE_URL + "/user/" + ID);
-        assertThat(response, hasStatusCode( 204 ));
+        delete(DEFAULT_BASE_URL + "/user/" + ID);
     }
 	
-	private User createTestObject() {
+	private User createTestUser() {
 
 		User user = new User();
 
