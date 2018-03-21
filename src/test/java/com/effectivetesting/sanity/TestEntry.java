@@ -1,6 +1,6 @@
 package com.effectivetesting.sanity;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
@@ -14,9 +14,9 @@ public class TestEntry {
     		.contentType("application/json")
     	
 	    .when()
-			.get(DEFAULT_BASE_URL + "/entry/2")
+			.get(DEFAULT_BASE_URL + "/entry/1")
 	    	
 		.then()
-			.body("title", equalTo("second entry"));
+			.body("title", equalTo("test"));
 	}
 }
