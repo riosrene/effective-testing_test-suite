@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.effectivetesting.common.EntityHelper;
 import com.effectivetesting.entities.User;
 import com.effectivetesting.pageobject.LoginPageObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +43,7 @@ public class LoginStepDefinitions {
 		this.email = email;	
         this.password = password;
         
-		User user = createTestObject(userName, email, password);
+		User user = EntityHelper.createTestUser(ID, userName, email, password);
 		ObjectMapper mapper = new ObjectMapper();
 		
 		String jsonInString = mapper.writeValueAsString(user);
@@ -69,15 +70,5 @@ public class LoginStepDefinitions {
 		driver.quit();
 		delete(DEFAULT_BASE_URL + "/api/user/" + ID);
 	}
-	
-	private User createTestObject(String userName, String email, String password) {
-		User user = new User();
 
-		user.setId(ID);
-		user.setEmail(email);
-		user.setpassword_hash(password);
-		user.setName(userName);
-		
-		return user;
-	}
 }

@@ -19,4 +19,10 @@ public class HomePageObject {
 	public String getStatusMessage() {
 		return driver.findElement(By.xpath("//*[@id=\"notification\"]/span")).getText();
 	}
+
+	public EntryListPageObject goToEntryList() {
+		driver.findElement(By.id("blog")).click();
+		
+		return new EntryListPageObject(driver);
+	}
 }
