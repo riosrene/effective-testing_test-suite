@@ -3,7 +3,15 @@ package com.effectivetesting.entities;
 import java.util.List;
 
 public class Entry {
+	private int author_id;
+	private String body;
+	private List<String> comments;
+	private String created_timestamp;
 	private int id;
+	private String modified_timestamp;
+	private String slug;
+	private int status;
+	private List<String> tags;
 	private String title;
 	
 	public int getId() {
@@ -30,18 +38,6 @@ public class Entry {
 		this.slug = slug;
 	}
 
-	private String slug;
-	private int num_results;
-	private List<Entry> objects;
-	private int page;
-	private int total_pages;
-	private int author_id;
-	private String body;
-	private int status;
-	private String created_timestamp;
-	private String modified_timestamp;
-	private List<String> tags;
-	private List<String> comments;
 	
 	public String getBody() {
 		return body;
@@ -90,10 +86,6 @@ public class Entry {
 	public void setComments(List<String> comments) {
 		this.comments = comments;
 	}
-
-	public int getTotal_pages() {
-		return total_pages;
-	}
 	
 	public int getAuthor_id() {
 		return author_id;
@@ -103,31 +95,4 @@ public class Entry {
 		this.author_id = author_id;
 	}
 
-	public void setTotal_pages(int total_pages) {
-		this.total_pages = total_pages;
-	}
-
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
-	}
-
-	public List<Entry> getObjects() {
-		return objects;
-	}
-	
-	public void setObjects(List<Entry> objects) {
-		this.objects = objects;
-	}
-	
-	public int getNum_results() {
-		return num_results;
-	}
-	
-	public void setNum_results(int num_results) {
-		this.num_results = num_results;
-	}
 }

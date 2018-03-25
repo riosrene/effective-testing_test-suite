@@ -43,7 +43,8 @@ public class ViewEntryStepDefinitions {
 		
 		post(DEFAULT_BASE_URL + "/api/user", body(jsonInString, "application/json"));
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(DEFAULT_BASE_URL);
@@ -51,14 +52,14 @@ public class ViewEntryStepDefinitions {
 	
 	@Dada("^la entrada \"([^\"]*)\" con el texto \"([^\"]*)\"$")
 	public void la_entrada_con_el_texto(String title, String body) throws Throwable {
-		Entry entry = EntityHelper.createTestEntry(99, 99, title, body, title.replace(" ", "-"), 0);
+		Entry entry = EntityHelper.createTestEntry(Integer.parseInt(USER_ID), Integer.parseInt(ENTRY_ID), title, body, title.replace(" ", "-").toLowerCase(), 0);
 		ObjectMapper mapper = new ObjectMapper();
 		
 		String jsonInString = mapper.writeValueAsString(entry);
 		
-		System.out.println("Injected entry:\n" + jsonInString);
+		System.out.println("Injected entry:\n" + jsonInString + "\n");
 		Response response = post(DEFAULT_BASE_URL + "/api/entry", body(jsonInString, "application/json"));
-		System.out.println("Response status: " + response.getStatusCode());
+		System.out.println("Response status: " + response + "\n");
 	}
 
 	@Cuando("^el usuario ingresa a la sección de entradas$")
@@ -81,6 +82,6 @@ public class ViewEntryStepDefinitions {
 	public void tearDown() {
 		driver.quit();
 		delete(DEFAULT_BASE_URL + "/api/user/" + USER_ID);
-		delete(DEFAULT_BASE_URL + "/api/user/" + ENTRY_ID);
+		delete(DEFAULT_BASE_URL + "/api/entry/" + ENTRY_ID);
 	}
 }
