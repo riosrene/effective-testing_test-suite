@@ -136,8 +136,8 @@
                       		<goal>generate</goal>
                    		</goals>
                    		<configuration>
-                   			<outputDirectory>target</outputDirectory>                      
-				  			<cucumberOutput>target/cucumber.json</cucumberOutput>
+                   			<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>                      
+				  			<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
                    		</configuration>
                 	</execution>
              	</executions>
