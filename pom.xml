@@ -117,6 +117,26 @@
           			</includes>
         		</configuration>   -->
       		</plugin>
+      		<plugin>
+             	<groupId>net.masterthought</groupId>
+             	<artifactId>maven-cucumber-reporting</artifactId>
+             	<version>3.15.0</version>
+             	<executions>
+                	<execution>
+                   		<id>execution</id>
+                   		<phase>verify</phase>
+                   		<goals>
+                      		<goal>generate</goal>
+                   		</goals>
+                   		<configuration>
+                      		<projectName>Effective Testing execution report</projectName>
+                      			<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>                      
+   					  			<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                      			<!-- <buildNumber>8.4.1.2</buildNumber> -->
+                   		</configuration>
+                	</execution>
+             	</executions>
+          	</plugin>
         </plugins>
     </build>
     
