@@ -132,7 +132,7 @@
                       		<projectName>Effective Testing execution report</projectName>
                       			<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>                      
    					  			<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                      			<!-- <buildNumber>8.4.1.2</buildNumber> -->
+                      			<buildNumber>1.0</buildNumber>
                    		</configuration>
                 	</execution>
              	</executions>
