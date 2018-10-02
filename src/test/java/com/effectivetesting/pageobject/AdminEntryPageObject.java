@@ -17,8 +17,10 @@ public class AdminEntryPageObject {
 	    WebDriverWait waitForArray = new WebDriverWait(driver, 10);
 	    waitForArray.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/table/tbody/tr")));
 		
-		driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/form")).click();
+	    driver.findElement(By.xpath("/html/body/div/table/thead/tr/th[8]/a")).click();
 	
+	    driver.findElement(By.xpath("/html/body/div/table/tbody/tr[1]/td[2]/form/button/i")).click();
+	    
 	    WebDriverWait wait = new WebDriverWait(driver, 10);
 	    Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		   
