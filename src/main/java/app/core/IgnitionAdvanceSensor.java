@@ -1,5 +1,13 @@
 package app.core;
 
 public class IgnitionAdvanceSensor {
-	public int angle;
+	private int angle;
+
+	public int getAngle() {
+		return angle;
+	}
+
+	public void setAngle(int angle) {
+		this.angle = angle;
+	}
 }

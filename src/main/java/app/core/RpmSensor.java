@@ -1,5 +1,13 @@
 package app.core;
 
 public class RpmSensor {
-	public int currentRpm;
-}
+	private int currentRpm;
+
+	public int getCurrentRpm() {
+		return currentRpm;
+	}
+
+	public void setCurrentRpm(int currentRpm) {
+		this.currentRpm = currentRpm;
+	}
+}	

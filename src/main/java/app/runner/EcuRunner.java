@@ -11,13 +11,13 @@ public class EcuRunner {
 		IgnitionAdvanceSensor ignitionAdvanceSensor = new IgnitionAdvanceSensor();
 		RpmSensor rpmSensor = new RpmSensor();
 
-		ecuState.ignition = true;
-		ignitionAdvanceSensor.angle = 40;
-		rpmSensor.currentRpm = 700;
+		ecuState.setIgnition(true);
+		ignitionAdvanceSensor.setAngle(40);
+		rpmSensor.setCurrentRpm(700);
 		
-		System.out.println("Engine started.");
+		System.out.println(ecuState.getStateMessage());
 		System.out.println("===============");
-		System.out.println("Engine RPM: " + rpmSensor.currentRpm);
+		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
 	}
 
 }
