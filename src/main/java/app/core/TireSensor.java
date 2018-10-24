@@ -10,4 +10,14 @@ public class TireSensor {
 	public float getOptimalPressure( ) {
 		return this.optimalPressure;
 	}
+	
+	public String checkPressure(float currentPressure) {
+		
+		if (currentPressure < optimalPressure) {
+			return "Tire pressure level is low.";
+		} else {
+			return "Tire pressure level is normal.";
+		}
+		
+	}
 }

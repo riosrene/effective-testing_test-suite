@@ -24,4 +24,9 @@ public class TestEcuStateModule {
 	public void containsIgnitionProperty() {
         assertThat(ecuModule, hasProperty("ignition"));	
 	}
+	
+	@Test
+	public void containsCurrentTirePressureProperty() {
+        assertThat(ecuModule, hasProperty("currentTirePressure"));	
+	}
 }

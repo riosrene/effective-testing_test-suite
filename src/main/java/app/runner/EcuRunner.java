@@ -15,12 +15,16 @@ public class EcuRunner {
 		
 		ecuState.setIgnition(true);
 		ignitionAdvanceSensor.setAngle(40);
+		ecuState.setCurrentTirePressure(25.0f);
 		rpmSensor.setCurrentRpm(700);
 		
 		System.out.println(ecuState.getStateMessage());
 		System.out.println("===============");
 		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
 		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
+		
+		float currentPressure = ecuState.getCurrentTirePressure();
+		System.out.println(tireSensor.checkPressure(currentPressure) + " Current pressure: " + currentPressure);
 	}
 
 }
