@@ -29,4 +29,9 @@ public class TestEcuStateModule {
 	public void containsCurrentTirePressureProperty() {
         assertThat(ecuModule, hasProperty("currentTirePressure"));	
 	}
+	
+	@Test
+	public void containsTwilightSentinelProperty() {
+        assertThat(ecuModule, hasProperty("twilightSentinelActivated"));	
+	}
 }

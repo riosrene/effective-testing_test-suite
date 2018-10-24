@@ -4,6 +4,7 @@ import app.core.EcuStateModule;
 import app.core.IgnitionAdvanceSensor;
 import app.core.RpmSensor;
 import app.core.TireSensor;
+import app.core.TwilightSentinel;
 
 public class EcuRunner {
 	
@@ -12,11 +13,13 @@ public class EcuRunner {
 		IgnitionAdvanceSensor ignitionAdvanceSensor = new IgnitionAdvanceSensor();
 		RpmSensor rpmSensor = new RpmSensor();
 		TireSensor tireSensor = new TireSensor();
+		TwilightSentinel twilightSentinel = new TwilightSentinel();
 		
 		ecuState.setIgnition(true);
 		ignitionAdvanceSensor.setAngle(40);
 		ecuState.setCurrentTirePressure(25.0f);
 		rpmSensor.setCurrentRpm(700);
+		ecuState.setTwilightSentinelState(false);
 		
 		System.out.println(ecuState.getStateMessage());
 		System.out.println("===============");
@@ -25,6 +28,9 @@ public class EcuRunner {
 		
 		float currentPressure = ecuState.getCurrentTirePressure();
 		System.out.println(tireSensor.checkPressure(currentPressure) + " Current pressure: " + currentPressure);
+		
+		boolean activated = ecuState.isTwilightSentinelActivated();
+		System.out.println(twilightSentinel.informState(activated));
 	}
 
 }

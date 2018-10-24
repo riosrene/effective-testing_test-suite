@@ -4,6 +4,7 @@ public class EcuStateModule {
 	private boolean ignition;
 	private String stateMessage;
 	private float currentTirePressure;
+	private boolean twilightSentinelActivated;
 	
 	public EcuStateModule() {
 		this.stateMessage = "ECU started.";
@@ -27,6 +28,14 @@ public class EcuStateModule {
 
 	public void setCurrentTirePressure(float currentTirePressure) {
 		this.currentTirePressure = currentTirePressure;
+	}
+	
+	public boolean isTwilightSentinelActivated() {
+		return twilightSentinelActivated;
+	}
+
+	public void setTwilightSentinelState(boolean activated) {
+		this.twilightSentinelActivated = activated;
 	}
 	
 }
