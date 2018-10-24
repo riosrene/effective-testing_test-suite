@@ -11,7 +11,7 @@ public class TestTireSensor {
 	@Test
 	public void containsPressureProperty() {
 		TireSensor tireSensor = new TireSensor();
-        assertThat(tireSensor, hasProperty("pressure", is(29.3f)));
+        assertThat(tireSensor, hasProperty("optimalPressure", is(29.3f)));
 	}
 
 }

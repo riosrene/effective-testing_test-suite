@@ -20,7 +20,7 @@ public class EcuRunner {
 		System.out.println(ecuState.getStateMessage());
 		System.out.println("===============");
 		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
-		System.out.println("Tire pressure level: " + tireSensor.getPressure());
+		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
 	}
 
 }

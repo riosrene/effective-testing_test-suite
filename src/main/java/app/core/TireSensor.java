@@ -1,13 +1,13 @@
 package app.core;
 
 public class TireSensor {
-	private float pressure;
+	private float optimalPressure;
 	
 	public TireSensor() {
-		this.pressure = 29.3f;
+		this.optimalPressure = 29.3f;
 	}
 	
-	public float getPressure( ) {
-		return this.pressure;
+	public float getOptimalPressure( ) {
+		return this.optimalPressure;
 	}
 }
