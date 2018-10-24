@@ -13,11 +13,21 @@ public class TireSensor {
 	
 	public String checkPressure(float currentPressure) {
 		
-		if (currentPressure < optimalPressure) {
-			return "Tire pressure level is low.";
-		} else {
-			return "Tire pressure level is normal.";
-		}
+		String message = new String();
+		
+		switch (Math.round(currentPressure) / 10) {
+		  	case 1:
+		  		message = "Tire pressure level is low. ";
+		  		break;
+		  	case 2:
+		  		message = "Tire pressure level is normal. ";
+		  		break;
+		  	case 3:
+		  		message = "Tire pressure level is high. ";
+	  	}
+		
+		return message;
 		
 	}
+	
 }

@@ -17,7 +17,7 @@ public class EcuRunner {
 		
 		ecuState.setIgnition(true);
 		ignitionAdvanceSensor.setAngle(40);
-		ecuState.setCurrentTirePressure(25.0f);
+		ecuState.setCurrentTirePressure(19.9f);
 		rpmSensor.setCurrentRpm(700);
 		ecuState.setTwilightSentinelState(false);
 		

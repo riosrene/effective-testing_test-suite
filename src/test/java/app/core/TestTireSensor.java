@@ -22,13 +22,19 @@ public class TestTireSensor {
 	
 	@Test
 	public void checkPressureLow() {
-		String message = tireSensor.checkPressure(25);
-		assertThat(message, is("Tire pressure level is low."));
+		String message = tireSensor.checkPressure(17.4f);
+		assertThat(message, is("Tire pressure level is low. "));
 	}
 	
 	@Test
 	public void checkPressureNormal() {
+		String message = tireSensor.checkPressure(25.4f);
+		assertThat(message, is("Tire pressure level is normal. "));
+	}
+	
+	@Test
+	public void checkPressureHigh() {
 		String message = tireSensor.checkPressure(30);
-		assertThat(message, is("Tire pressure level is normal."));
+		assertThat(message, is("Tire pressure level is high. "));
 	}
 }
