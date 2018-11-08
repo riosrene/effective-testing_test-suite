@@ -23,8 +23,7 @@ public class EcuRunner {
 		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
 		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
 		
-		float currentPressure = ecuState.getCurrentTirePressure();
-		System.out.println(tireSensor.checkPressure(currentPressure) + " Current pressure: " + currentPressure);
+		tireSensor.checkPressure(ecuState.getCurrentTirePressure(), 4).forEach(t -> System.out.println(t));
 	}
 
 }
