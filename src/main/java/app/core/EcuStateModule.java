@@ -5,6 +5,7 @@ public class EcuStateModule {
 	private String stateMessage;
 	private float currentTirePressure;
 	private int doors;
+	private int seatbelts;
 	
 	public EcuStateModule() {
 		this.stateMessage = "ECU started.";
@@ -36,6 +37,14 @@ public class EcuStateModule {
 
 	public void setDoors(int doors) {
 		this.doors = doors;
+	}
+
+	public int getSeatbelts() {
+		return seatbelts;
+	}
+
+	public void setSeatbelts(int seatbelts) {
+		this.seatbelts = seatbelts;
 	}
 	
 }
