@@ -30,7 +30,8 @@ public class EcuRunner {
 		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
 		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
 		
-		tireSensor.checkPressure(ecuState.getCurrentTirePressure(), 4).forEach(t -> System.out.println(t));
+		tireSensor.setCurrentPressure(ecuState.getCurrentTirePressure());
+		tireSensor.checkState(4).forEach(t -> System.out.println(t));
 		doorSensor.checkDoors(ecuState.getDoors()).forEach(t -> System.out.println(t));
 		seatBeltSensor.checkState(ecuState.getSeatbelts()).forEach(t -> System.out.println(t));
 	}

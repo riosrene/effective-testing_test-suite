@@ -3,8 +3,9 @@ package app.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TireSensor {
+public class TireSensor implements BinarySensor {
 	private float optimalPressure;
+	private float currentPressure;
 	
 	public TireSensor() {
 		this.optimalPressure = 29.3f;
@@ -14,17 +15,22 @@ public class TireSensor {
 		return this.optimalPressure;
 	}
 	
-	public List<String> checkPressure(float currentPressure, int wheels) {
+	public void setCurrentPressure(float currentPressure) {
+		this.currentPressure = currentPressure;
+	}
+	
+	public List<String> checkState(int itemToCheck) {
 		List<String> message = new ArrayList<String>();
-				
+		
 		message.add("Attempting to check tire pressure.");
-		
-		for(int i = 0; i < wheels; i++) {
+
+		while(itemToCheck > 0) {
 			if(this.optimalPressure > currentPressure) {
-				message.add("Wheel " + (i+1) + "-> Tire pressure level: normal");
+				message.add("Wheel " + (itemToCheck) + "-> Tire pressure level: normal");
 			}
+			itemToCheck--;
 		}
-		
+
 		return message;
 	}
 }
