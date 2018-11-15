@@ -3,6 +3,7 @@ package app.runner;
 import app.core.BinarySensor;
 import app.core.DoorSensor;
 import app.core.EcuStateModule;
+import app.core.FuelPumpSensor;
 import app.core.IgnitionAdvanceSensor;
 import app.core.RpmSensor;
 import app.core.SeatBeltSensor;
@@ -17,6 +18,7 @@ public class EcuRunner {
 		TireSensor tireSensor = new TireSensor();
 		DoorSensor doorSensor = new DoorSensor();
 		BinarySensor seatBeltSensor = new SeatBeltSensor();
+		FuelPumpSensor fuelPump = new FuelPumpSensor();
 		
 		ecuState.setIgnition(true);
 		ignitionAdvanceSensor.setAngle(40);
@@ -49,6 +51,12 @@ public class EcuRunner {
 		System.out.println("Operation mode:" + tireSensor.showConfigValueByName("mode"));
 		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
 		tireSensor.checkState(4).forEach(t -> System.out.println(t));
+		
+		separateLine();
+		
+		fuelPump.saveConfiguration("mode", "normal");
+		String mode = fuelPump.showConfigValueByName("mode");
+		System.out.println(fuelPump.showFuelConsumption(mode));
 	}
 
 	private static void separateLine() {
