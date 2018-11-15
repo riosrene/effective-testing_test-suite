@@ -3,7 +3,7 @@ package app.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TireSensor implements BinarySensor {
+public class TireSensor extends Sensor implements BinarySensor {
 	private float optimalPressure;
 	private float currentPressure;
 	

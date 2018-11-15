@@ -26,14 +26,32 @@ public class EcuRunner {
 		ecuState.setSeatbelts(5);
 		
 		System.out.println(ecuState.getStateMessage());
-		System.out.println("===============");
-		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
-		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
 		
-		tireSensor.setCurrentPressure(ecuState.getCurrentTirePressure());
-		tireSensor.checkState(4).forEach(t -> System.out.println(t));
+		separateLine();
+		
+		System.out.println("Engine RPM: " + rpmSensor.getCurrentRpm());
+		
+		separateLine();
+		
 		doorSensor.checkDoors(ecuState.getDoors()).forEach(t -> System.out.println(t));
+		
+		separateLine();
+		
 		seatBeltSensor.checkState(ecuState.getSeatbelts()).forEach(t -> System.out.println(t));
+		
+		separateLine();
+		
+		tireSensor.setMeassurementUnit("BAR");
+		tireSensor.saveConfiguration("mode", "standard");
+		tireSensor.setCurrentPressure(ecuState.getCurrentTirePressure());
+		
+		System.out.println("Tire sensor meassurement unit: " + tireSensor.getMeassurementUnit());
+		System.out.println("Operation mode:" + tireSensor.showConfigValueByName("mode"));
+		System.out.println("Optimal tire pressure level: " + tireSensor.getOptimalPressure());
+		tireSensor.checkState(4).forEach(t -> System.out.println(t));
 	}
 
+	private static void separateLine() {
+		System.out.println("\n");
+	}
 }
