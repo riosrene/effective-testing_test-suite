@@ -3,11 +3,13 @@ package com.effectivetesting.pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.effectivetesting.driver.SingletonWebDriver;
+
 public class EntryPageObject {
 	private WebDriver driver;
 	
-	public EntryPageObject(WebDriver driver) {
-		this.driver = driver;
+	public EntryPageObject() {
+		this.driver = SingletonWebDriver.getInstance();
 	}
 	
 	public EntryPageObject createEntry(String title, String text) {

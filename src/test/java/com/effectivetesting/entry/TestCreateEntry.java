@@ -2,20 +2,16 @@ package com.effectivetesting.entry;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.effectivetesting.pageobject.EntryPageObject;
-import com.effectivetesting.pageobject.HomePageObject;
+import com.effectivetesting.driver.SingletonWebDriver;
 import com.effectivetesting.pageobject.LoginPageObject;
 
 public class TestCreateEntry {
@@ -24,30 +20,27 @@ public class TestCreateEntry {
 	
 	@Test
 	public void postIsSuccessfull() {
-		loginPage = new LoginPageObject(driver);
-		HomePageObject homePage = loginPage.login("admin1@gmail.com", "admin1");
-		
-		EntryPageObject entryPage = homePage.goToCreateEntry();
-		entryPage.createEntry("My newest post", "This is a post.");
-		
-		String currentMessage = entryPage.getResultMessage();
-		System.out.println(currentMessage);
+		loginPage = new LoginPageObject();
+		String currentMessage = loginPage
+									.login("admin1@gmail.com", "admin1")
+									.goToCreateEntry()
+									.createEntry("My newest post", "This is a post.")
+									.getResultMessage();
 		
 		assertTrue(currentMessage.contains("Entry 'My newest post' created successfully."));
 	}
 	
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver = SingletonWebDriver.getInstance();
 		driver.get("localhost:5000");
 	}
 
 	@After
 	public void teardDown() {
 		driver.get("http://localhost:5000/admin/entry/");
-		driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/form")).click();
+		driver.findElement(By.xpath("/html/body/div/table/thead/tr/th[8]/a")).click();
+		driver.findElement(By.xpath("/html/body/div/table/tbody/tr[1]/td[2]/form/button")).click();
 		
 	    WebDriverWait wait = new WebDriverWait(driver, 10);
 	    Alert alert = wait.until(ExpectedConditions.alertIsPresent());

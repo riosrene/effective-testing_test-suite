@@ -3,11 +3,13 @@ package com.effectivetesting.pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.effectivetesting.driver.SingletonWebDriver;
+
 public class LoginPageObject {
 	private WebDriver driver;
 	
-	public LoginPageObject(WebDriver driver) {
-		this.driver = driver;
+	public LoginPageObject() {
+		this.driver = SingletonWebDriver.getInstance();
 	}
 	
 	public HomePageObject login(String email, String pass) {
@@ -16,6 +18,6 @@ public class LoginPageObject {
 		driver.findElement(By.id("password")).sendKeys(pass);
 		driver.findElement(By.id("btn-submit")).click();
 		
-		return new HomePageObject(driver);
+		return new HomePageObject();
 	}
 }
