@@ -15,4 +15,9 @@ public class HomePageObject {
 		
 		return new EntryPageObject(driver);
 	}
+
+	public EntryListPageObject gotoAvailableEntries() {
+		driver.findElement(By.id("blog")).click();
+		return new EntryListPageObject(driver);
+	}
 }
