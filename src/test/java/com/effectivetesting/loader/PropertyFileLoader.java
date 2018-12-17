@@ -1,4 +1,4 @@
-package com.effectivetesting.dataloader;
+package com.effectivetesting.loader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-public class PropertyFileDataLoader {
+public class PropertyFileLoader implements Loader {
 
-	public Map<String, String> loadData(List<String> params) {
+	public Map<String, String> getTestData(List<String> params) {
 		Properties propertyFile = new Properties();
 		InputStream input = null;
 		Map<String, String> data = new HashMap<String, String>();

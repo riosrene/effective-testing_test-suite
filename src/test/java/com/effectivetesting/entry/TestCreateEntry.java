@@ -17,11 +17,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.effectivetesting.dataloader.PropertyFileDataLoader;
+import com.effectivetesting.loader.PropertyFileLoader;
 import com.effectivetesting.pageobject.LoginPageObject;
 
 public class TestCreateEntry {
-	private PropertyFileDataLoader dataLoader;
+	private PropertyFileLoader dataLoader;
 	private Map<String, String> testData;
 	private Map<String, String> testCredentials;
 	private WebDriver driver;
@@ -41,7 +41,7 @@ public class TestCreateEntry {
 	
 	@Before
 	public void setUp() {
-		dataLoader = new PropertyFileDataLoader();
+		dataLoader = new PropertyFileLoader();
 		
 		List<String> credentialParams = new ArrayList<String>();
 		credentialParams.add("admin_credentials.properties");
@@ -53,8 +53,8 @@ public class TestCreateEntry {
 		testParams.add("name");
 		testParams.add("body");
 		
-		testCredentials = dataLoader.loadData(credentialParams);
-		testData = dataLoader.loadData(testParams);
+		testCredentials = dataLoader.getTestData(credentialParams);
+		testData = dataLoader.getTestData(testParams);
 		
 //		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
