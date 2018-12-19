@@ -29,7 +29,7 @@ public class TestCreateEntry {
 	private Map<String, String> testCredentials;
 	private WebDriver driver;
 	private LoginPageObject loginPage;
-	
+	private Class<? extends TestCreateEntry> clazz;
 	final static Logger logger = Logger.getLogger(TestCreateEntry.class);
 	
 	@Rule 
@@ -52,6 +52,9 @@ public class TestCreateEntry {
 	
 	@Before
 	public void setUp() {
+		clazz = this.getClass();
+		logger.info("Starting " + clazz.getSimpleName() + " suite.");
+		
 		dataLoader = new PropertyFileLoader();
 		
 		List<String> credentialParams = new ArrayList<String>();
@@ -85,6 +88,7 @@ public class TestCreateEntry {
 
 	@After
 	public void teardDown() {
+		logger.info("Finalizing " + clazz.getSimpleName() + " suite.");
 		driver.get("http://localhost:5000/admin/entry/");
 		driver.findElement(By.xpath("/html/body/div/table/thead/tr/th[8]/a")).click();
 		driver.findElement(By.xpath("/html/body/div/table/tbody/tr[1]/td[2]/form/button")).click();
