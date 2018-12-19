@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,8 +30,15 @@ public class TestCreateEntry {
 	private WebDriver driver;
 	private LoginPageObject loginPage;
 	
+	final static Logger logger = Logger.getLogger(TestCreateEntry.class);
+	
+	@Rule 
+	public TestName name = new TestName();
+	
 	@Test
 	public void postIsSuccessfull() {
+		logger.info("Starting Test Case: " + name.getMethodName());
+		
 		loginPage = new LoginPageObject(driver);
 		String currentMessage = loginPage
 				.login(testCredentials.get("email"), testCredentials.get("pass"))
@@ -36,6 +46,7 @@ public class TestCreateEntry {
 				.createEntry(testData.get("name"),testData.get("body"))
 				.getResultMessage();
 		
+		logger.info("Asserting operation: " + currentMessage);
 		assertTrue(currentMessage.contains("Entry '" + testData.get("name") + "' created successfully."));
 	}
 	
@@ -54,13 +65,22 @@ public class TestCreateEntry {
 		testParams.add("body");
 		
 		testCredentials = dataLoader.getTestData(credentialParams);
+		logger.info("Credentials to be used: " + credentialParams.get(1) + "--> " + testCredentials.get("email"));
+		logger.info("Credentials to be used: " + credentialParams.get(2) + "--> " + testCredentials.get("pass"));
+
 		testData = dataLoader.getTestData(testParams);
+		logger.info("Entry to be used: " + testParams.get(1) + "--> " + testData.get("name"));
+		logger.info("Entry to be used: " + testParams.get(2) + "--> " + testData.get("body"));
 		
+		logger.info("WebDriver information: ");
 //		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.get("localhost:5000");
+		
+		String url = "localhost:5000";
+		logger.info("Opening environment URL: " + url);
+		driver.get(url);
 	}
 
 	@After

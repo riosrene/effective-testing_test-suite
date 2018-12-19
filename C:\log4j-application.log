@@ -1,0 +1,62 @@
+2018-12-18 15:36:42 INFO  TestCreateEntry:49 - Injecting credentials from property file.
+2018-12-18 15:36:42 INFO  TestCreateEntry:55 - Injecting credentials from property file.
+2018-12-18 15:36:42 INFO  TestCreateEntry:64 - Defining WebDriver.
+2018-12-18 15:43:33 INFO  TestCreateEntry:49 - Injecting credentials from property file.
+2018-12-18 15:43:33 DEBUG TestCreateEntry:50 - DEBUG
+2018-12-18 15:43:33 INFO  TestCreateEntry:56 - Injecting credentials from property file.
+2018-12-18 15:43:33 INFO  TestCreateEntry:65 - Defining WebDriver.
+2018-12-18 15:44:06 INFO  TestCreateEntry:49 - Injecting credentials from property file.
+2018-12-18 15:44:06 INFO  TestCreateEntry:56 - Injecting credentials from property file.
+2018-12-18 15:44:06 INFO  TestCreateEntry:65 - Defining WebDriver.
+2018-12-18 15:44:40 INFO  TestCreateEntry:49 - Injecting credentials from property file.
+2018-12-18 15:44:47 INFO  TestCreateEntry:56 - Injecting credentials from property file.
+2018-12-18 15:52:08 INFO  TestCreateEntry:49 - Injecting credentials from property file.
+2018-12-18 15:52:08 INFO  TestCreateEntry:56 - Injecting credentials from property file.
+2018-12-18 15:52:08 INFO  TestCreateEntry:65 - Defining WebDriver.
+2018-12-18 17:12:45 INFO  TestCreateEntry:68 - Credentials to be used: email: admin1@gmail.com
+2018-12-18 17:12:45 INFO  TestCreateEntry:69 - Credentials to be used: pass: admin1
+2018-12-18 17:12:45 INFO  TestCreateEntry:72 - Entry to be used: name: mypost
+2018-12-18 17:12:45 INFO  TestCreateEntry:73 - Entry to be used: body: testdata
+2018-12-18 17:12:53 INFO  TestCreateEntry:40 - Starting Test Case: postIsSuccessfull
+2018-12-18 17:13:01 INFO  TestCreateEntry:49 - Asserting operation: Entry 'mypost' created successfully.
+2018-12-18 17:20:05 INFO  TestCreateEntry:68 - Credentials to be used: email: admin1@gmail.com
+2018-12-18 17:20:05 INFO  TestCreateEntry:69 - Credentials to be used: pass: admin1
+2018-12-18 17:20:05 INFO  TestCreateEntry:72 - Entry to be used: name: mypost
+2018-12-18 17:20:05 INFO  TestCreateEntry:73 - Entry to be used: body: testdata
+2018-12-18 17:20:11 INFO  TestCreateEntry:40 - Starting Test Case: postIsSuccessfull
+2018-12-18 17:20:20 INFO  TestCreateEntry:49 - Asserting operation: Entry 'mypost' created successfully.
+2018-12-18 17:31:01 INFO  TestCreateEntry:68 - Credentials to be used: email: admin1@gmail.com
+2018-12-18 17:31:01 INFO  TestCreateEntry:69 - Credentials to be used: pass: admin1
+2018-12-18 17:31:01 INFO  TestCreateEntry:72 - Entry to be used: name: mypost
+2018-12-18 17:31:01 INFO  TestCreateEntry:73 - Entry to be used: body: testdata
+2018-12-18 17:31:07 INFO  TestCreateEntry:40 - Starting Test Case: postIsSuccessfull
+2018-12-18 17:31:16 INFO  TestCreateEntry:49 - Asserting operation: Entry 'mypost' created successfully.
+2018-12-18 17:31:38 INFO  TestCreateEntry:68 - Credentials to be used: email: admin1@gmail.com
+2018-12-18 17:31:38 INFO  TestCreateEntry:69 - Credentials to be used: pass: admin1
+2018-12-18 17:31:38 INFO  TestCreateEntry:72 - Entry to be used: name: mypost
+2018-12-18 17:31:38 INFO  TestCreateEntry:73 - Entry to be used: body: testdata
+2018-12-18 17:31:44 INFO  TestCreateEntry:40 - Starting Test Case: postIsSuccessfull
+2018-12-18 17:31:52 INFO  TestCreateEntry:49 - Asserting operation: Entry 'mypost' created successfully.
+2018-12-18 17:54:24 INFO  TestCreateEntry:68 - Credentials to be used: email: admin1@gmail.com
+2018-12-18 17:54:24 INFO  TestCreateEntry:69 - Credentials to be used: pass: admin1
+2018-12-18 17:54:24 INFO  TestCreateEntry:72 - Entry to be used: name: mypost
+2018-12-18 17:54:24 INFO  TestCreateEntry:73 - Entry to be used: body: testdata
+2018-12-18 17:54:24 INFO  TestCreateEntry:75 - WebDriver information: 
+2018-12-18 17:54:32 INFO  TestCreateEntry:82 - Opening environment URL: localhost:5000
+2018-12-18 17:54:33 INFO  TestCreateEntry:40 - Starting Test Case: postIsSuccessfull
+2018-12-18 17:54:33 DEBUG LoginPageObject:16 - Logging into the app.
+2018-12-18 17:54:35 DEBUG HomePageObject:16 - Going to Create Entry section.
+2018-12-18 17:54:35 DEBUG EntryPageObject:16 - Entering Entry data.
+2018-12-18 17:54:41 DEBUG EntryPageObject:24 - Getting operation result.
+2018-12-18 17:54:41 INFO  TestCreateEntry:49 - Asserting operation: Entry 'mypost' created successfully.
+2018-12-18 17:57:39 ERROR LoginPageObject:24 - org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"login1"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.15.0-22-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 15.08 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'corpu-HP-ProBook-640-G2', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-22-generic', java.version: '1.8.0_171'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb), userDataDir=/tmp/.org.chromium.Chromium.zO1r9C}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=66.0.3359.181, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=false, acceptInsecureCerts=false, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, setWindowRect=true, unexpectedAlertBehaviour=}]
+Session ID: 46c07f867808cb670cf48bb880a12f57
+*** Element info: {Using=id, value=login1}
