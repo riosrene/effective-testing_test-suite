@@ -16,6 +16,8 @@ import com.effectivetesting.entities.User;
 import com.effectivetesting.helpers.UserHelper;
 import com.effectivetesting.pageobject.LoginPageObject;
 
+import io.restassured.path.json.JsonPath;
+
 public class TestCreateEntry {
 	private static final String DEFAULT_BASE_URL = "http://localhost:5000/api";
 	private WebDriver driver;
@@ -57,17 +59,20 @@ public class TestCreateEntry {
 
 	@After
 	public void teardDown() {
-		int entryID = given()
-    		.contentType("application/json")
-    	
-	    .when()
-			.get(DEFAULT_BASE_URL + "/entry")
-	    	
-		.then()
-        	.extract()
-			.path("num_results");
+        JsonPath jsonPath = given()
+				.contentType("application/json")
+				
+				.when()
+					.get(DEFAULT_BASE_URL + "/api/entry")
+				
+                .thenReturn().jsonPath();
 
-		delete(DEFAULT_BASE_URL + "/entry/" + entryID);
+        System.out.println(jsonPath.getString(String.format("%s", "objects.id")));
+        System.out.println(jsonPath.getString(String.format("%s", "objects.title")));
+		
+		
+		//delete(DEFAULT_BASE_URL + "/api/entry/" + entryID.get(entryID.size() - 1));
+
 		delete(DEFAULT_BASE_URL + "/user/" + userID);
 		
 	    driver.quit();
