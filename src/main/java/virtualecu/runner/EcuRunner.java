@@ -7,17 +7,15 @@ import virtualecu.input.TPS;
 public class EcuRunner {
 	
 	public static void main (String[] args) {
-		EcuDashboard dashboard = new EcuDashboard();
+		boolean isCelsius = true;
+		ECT ect = new ECT(isCelsius);
 		TPS tps = new TPS();
-		ECT ect = new ECT();
 
-		dashboard.message = "throttle position: ";
-		tps.angle = 40;
-		System.out.println(dashboard.message + tps.angle + "º");
+		tps.setAngle(40);
+		EcuDashboard.showMessage(tps.GetName() + ": " + tps.getAngle() + "º");;
 		
-		ect.temperature = 65.3f;
-		dashboard.message = "engine temperature: ";
-		System.out.println("Engine temperature: " + ect.temperature + "º");
+		ect.setTemperature(65.3f);
+		EcuDashboard.showMessage(ect.getName() + ": " + ect.getTemperature() + "º");
 	}
 
 }
