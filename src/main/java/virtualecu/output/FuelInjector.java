@@ -1,26 +1,25 @@
 package virtualecu.output;
 
 public class FuelInjector {
-	private boolean voltageOff;
+	private boolean voltageOn;
 	private String state;
 	
-	public FuelInjector(boolean voltageOff) {
-		this.voltageOff = voltageOff;
+	public FuelInjector(boolean voltageOn) {
+		this.voltageOn = voltageOn;
 		state = "fuel injector closed";
 	}
 	
 	public void interruptVoltage() {
-		voltageOff = true;
+		voltageOn = false;
 	}
 	
 	public void inject(float pressure) {
-		if (voltageOff == true) {
+		if (voltageOn == false) {
 			if (pressure <= 2.5f) {
 				state = "injecting fuel";
 			} else {
 				state = "injecting fuel, full capacity";
 			}
-			
 		}
 	}
 	

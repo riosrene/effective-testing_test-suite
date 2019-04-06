@@ -13,8 +13,8 @@ public class TestFuelInjector {
 	
 	@Before
 	public void setUp() {
-		boolean voltageOff = false;
-		injector = new FuelInjector(voltageOff);
+		boolean voltageOn = true;
+		injector = new FuelInjector(voltageOn);
 	}
 	
 	@Test
