@@ -2,6 +2,7 @@ package virtualecu.runner;
 
 import virtualecu.core.EcuProcessor;
 import virtualecu.display.EcuDashboard;
+import virtualecu.input.BS;
 import virtualecu.input.ECT;
 import virtualecu.input.Lambda;
 import virtualecu.input.MAP;
@@ -15,12 +16,18 @@ public class EcuRunner {
 		Lambda lambda = new Lambda();
 		TPS tps = new TPS();
 		MAP map = new MAP();
+		BS bs = new BS();
 		EcuProcessor processor = new EcuProcessor();
 
-		map.setHg(2.5f);
+		map.setHg(2.7f);
 		EcuDashboard.showMessage(map.getName() + ": " + map.getHg() + "Hg");
-
+		
+		bs.setHg(2.4f);
+		EcuDashboard.showMessage(bs.getName() + ": " + bs.getHg() + "Hg");
+		
 		tps.setAngle(40);
+		String airDensity = processor.measureAirDensity(map, bs);
+		EcuDashboard.showMessage("Air Density Level: " + airDensity);
 		processor.dosifyFuel(tps);
 		EcuDashboard.showMessage(tps.GetName() + ": " + tps.getAngle() + "º");
 		EcuDashboard.showMessage(processor.getInjectorState());
