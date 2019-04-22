@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import virtualecu.core.FuelDosis;
+import virtualecu.core.instruction.FuelDosis;
 
 public class TestFuelInjector {
 	private FuelInjector fuelInjector;

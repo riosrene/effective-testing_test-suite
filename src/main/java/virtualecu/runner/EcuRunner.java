@@ -19,6 +19,9 @@ public class EcuRunner {
 		BS bs = new BS();
 		EcuProcessor processor = new EcuProcessor();
 
+		ect.setTemperature(20.3f);
+		EcuDashboard.showMessage(processor.checkCoolantTemperature(ect));
+
 		map.setHg(2.7f);
 		EcuDashboard.showMessage(map.getName() + ": " + map.getHg() + "Hg");
 		
@@ -32,8 +35,7 @@ public class EcuRunner {
 		EcuDashboard.showMessage(tps.GetName() + ": " + tps.getAngle() + "º");
 		EcuDashboard.showMessage(processor.getInjectorState());
 		
-		ect.setTemperature(65.3f);
-		EcuDashboard.showMessage(ect.getName() + ": " + ect.getTemperature() + "º");
+		
 		
 		float airFuelRatio = 11.5f;
 		lambda.measureRatio(airFuelRatio);

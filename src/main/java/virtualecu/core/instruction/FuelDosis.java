@@ -1,4 +1,4 @@
-package virtualecu.core;
+package virtualecu.core.instruction;
 
 public class FuelDosis {
 	public static final float STAGE_O = 1.4f;
