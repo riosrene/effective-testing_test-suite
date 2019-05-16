@@ -10,10 +10,12 @@ import org.junit.Test;
 import virtualecu.input.BS;
 import virtualecu.input.ECT;
 import virtualecu.input.MAP;
+import virtualecu.input.TPS;
 
 public class TestEcuProcessor {
 	private EcuProcessor ecuProcessor;
 	private ECT ect;
+	private TPS tps;
 	private MAP map;
 	private BS bs;
 	
@@ -21,6 +23,7 @@ public class TestEcuProcessor {
 	public void setUp() {
 		ecuProcessor = new EcuProcessor();
 		ect = new ECT(true);
+		tps = new TPS();
 		map = new MAP();
 		bs = new BS();
 	}
@@ -28,9 +31,24 @@ public class TestEcuProcessor {
 	@Test
 	public void testCheckCoolantTemperature() {
 		ect.setTemperature(20.3f);
-		String message = ecuProcessor.checkCoolantTemperature(ect);
+		ecuProcessor.setEct(ect);
+		String message = ecuProcessor.checkCoolantTemperature();
 		
 		assertThat(message, is(equalTo("Checking coolant temp, reaching minimum threshold in 46 secs")));
+	}
+	
+	@Test
+	public void testCheckCoolantTemperatureMax() {
+		map.setHg(2.7f);
+		bs.setHg(2.4f);
+		tps.setAngle(40);
+		ect.setTemperature(20.3f);
+		ecuProcessor.setEct(ect);
+		ecuProcessor.measureAirDensity(map, bs);
+		ecuProcessor.dosifyFuel(tps);
+		String message = ecuProcessor.checkCoolantTemperature();
+		
+		assertThat(message, is(equalTo("Checking coolant temp, reaching max threshold in 15 secs")));
 	}
 
 	@Test

@@ -19,8 +19,9 @@ public class EcuRunner {
 		BS bs = new BS();
 		EcuProcessor processor = new EcuProcessor();
 
-		ect.setTemperature(20.3f);
-		EcuDashboard.showMessage(processor.checkCoolantTemperature(ect));
+		ect.setTemperature(25.3f);
+		processor.setEct(ect);
+		EcuDashboard.showMessage(processor.checkCoolantTemperature());
 
 		map.setHg(2.7f);
 		EcuDashboard.showMessage(map.getName() + ": " + map.getHg() + "Hg");
@@ -31,9 +32,10 @@ public class EcuRunner {
 		tps.setAngle(40);
 		String airDensity = processor.measureAirDensity(map, bs);
 		EcuDashboard.showMessage("Air Density Level: " + airDensity);
-		processor.dosifyFuel(tps);
 		EcuDashboard.showMessage(tps.GetName() + ": " + tps.getAngle() + "º");
+		processor.dosifyFuel(tps);
 		EcuDashboard.showMessage(processor.getInjectorState());
+		EcuDashboard.showMessage(processor.checkCoolantTemperature());
 		
 		
 		
