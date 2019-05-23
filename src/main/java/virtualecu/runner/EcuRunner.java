@@ -36,6 +36,7 @@ public class EcuRunner {
 		processor.dosifyFuel(tps);
 		EcuDashboard.showMessage(processor.getInjectorState());
 		EcuDashboard.showMessage(processor.checkCoolantTemperature());
+		EcuDashboard.showMessage(processor.getRadiatorFanState());
 		
 		
 		

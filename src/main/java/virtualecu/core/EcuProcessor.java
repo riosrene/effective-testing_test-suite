@@ -7,11 +7,14 @@ import virtualecu.input.ECT;
 import virtualecu.input.MAP;
 import virtualecu.input.TPS;
 import virtualecu.output.FuelInjector;
+import virtualecu.output.RadiatorFan;
 
 public class EcuProcessor {
-	private boolean voltageOn = true;		
+	private boolean voltageOn = true;
+	private int timer = 0;
 	private FuelInjector injector = new FuelInjector(voltageOn);
 	private ECT ect;
+	private RadiatorFan radiatorFan = new RadiatorFan();
 	private String airDensity;
 	
 	public ECT getEct() {
@@ -40,10 +43,15 @@ public class EcuProcessor {
 				times += 1;
 			}	
 			
-			if(indexFromEct + times == Math.round(TemperatureThreshold.MAX_CELSIUS) + 1) message = "Checking coolant temp, reaching max threshold in " + times + " secs";
+			if(indexFromEct + times == Math.round(TemperatureThreshold.MAX_CELSIUS) + 1) {
+				message = "Checking coolant temp, reaching max threshold in " + times + " secs";			
+				turnOnRadiatorFan(indexFromEct + times);
+			}
 		}
+		
 		return message;
 	}
+	
 	
 	public String measureAirDensity(MAP map, BS bs) {
 		int airDensityDiff = Math.round(map.getHg() - bs.getHg());
@@ -96,6 +104,10 @@ public class EcuProcessor {
 		return injector.getState();
 	}
 	
+	public String getRadiatorFanState() {
+		return "Radiator fan worked for " + timer + " minutes.";
+	}
+	
 	private void injectFuel(float fuelDosis) {
 		injector.interruptVoltage();
 		injector.inject(fuelDosis);
@@ -103,6 +115,15 @@ public class EcuProcessor {
 		float coolantTemp = ect.getTemperature();
 		if(fuelDosis >= FuelDosis.STAGE_O && fuelDosis <= FuelDosis.STAGE_1) ect.setTemperature(coolantTemp + 50.2f);
 		if(fuelDosis >= FuelDosis.STAGE_2 && fuelDosis <= FuelDosis.STAGE_3) ect.setTemperature(coolantTemp + 55.6f);
+	}
+	
+	private void turnOnRadiatorFan(float currentTemp) {
+		radiatorFan.setTurnedOn(true);
+		while(currentTemp > TemperatureThreshold.MAX_CELSIUS) {
+			currentTemp -= 0.5f;
+			ect.setTemperature(currentTemp); 
+			timer++;
+		}
 	}
 
 }
