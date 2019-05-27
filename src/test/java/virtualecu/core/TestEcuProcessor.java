@@ -90,4 +90,22 @@ public class TestEcuProcessor {
 		
 		assertThat(currentAirDensity, is(equalTo("failed")));
 	}
+	
+	@Test
+	public void testRadiatorFanStatus() {
+		ect.setTemperature(25.3f);
+		ecuProcessor.setEct(ect);
+
+		map.setHg(2.7f);
+		bs.setHg(2.4f);
+		ecuProcessor.measureAirDensity(map, bs);
+
+		tps.setAngle(40);
+		ecuProcessor.dosifyFuel(tps);
+
+		ecuProcessor.checkCoolantTemperature();
+		String message = ecuProcessor.getRadiatorFanState();
+		
+		assertThat(message, is(equalTo("Radiator fan worked for 2 minutes.")));
+	}
 }

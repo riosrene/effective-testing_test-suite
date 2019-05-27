@@ -38,8 +38,6 @@ public class EcuRunner {
 		EcuDashboard.showMessage(processor.checkCoolantTemperature());
 		EcuDashboard.showMessage(processor.getRadiatorFanState());
 		
-		
-		
 		float airFuelRatio = 11.5f;
 		lambda.measureRatio(airFuelRatio);
 		EcuDashboard.showMessage(lambda.getName() + ": is receiving " + airFuelRatio + " air/fuel ratio - " + lambda.getState());
