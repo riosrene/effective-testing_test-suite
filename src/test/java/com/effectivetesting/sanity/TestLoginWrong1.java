@@ -1,6 +1,6 @@
 package com.effectivetesting.sanity;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestLogin {
+public class TestLoginWrong1 {
 	private WebDriver driver;
 	
 	@Before
@@ -42,8 +42,8 @@ public class TestLogin {
 		driver.findElement(By.id("email")).sendKeys("admin1@gmail.com");
 		driver.findElement(By.id("password")).sendKeys("admin1@gmail.com");
 		driver.findElement(By.id("btn-submit")).click();
-		String currentMessage = driver.findElement(By.xpath("//*[@id=\"content_title\"]/form/div[1]/div/span[2]));"
-		assertEquals("Invalid email or password, currentMessage);"
+		String currentMessage = driver.findElement(By.xpath("//*[@id=\"content_title\"]/form/div[1]/div/span[2]")).getText();
+		assertEquals("Invalid email or password.", currentMessage);
 				
 			
 	}
